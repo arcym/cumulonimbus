@@ -1,84 +1,21 @@
-
-## sources/references
-## http://docs.travis-ci.com/user/getting-started/
-## http://docs.travis-ci.com/user/languages/javascript-with-nodejs/
-## http://docs.travis-ci.com/user/build-configuration/#.travis.yml-file%3A-what-it-is-and-how-it-is-used
-## Travis-CI social continuous intergration (T3CON12DE) https://www.youtube.com/watch?v=JicPX7K_dJs
-## Testing Django with Travis CI https://www.youtube.com/watch?v=uFRJsbV8W_4#t=8m27s
-## Testing .travis.yml files http://lint.travis-ci.org/
-
-language: node_js
+language:
+ - "node_js"
 node_js:
-  ## versions to test against
-  - "0.11"
-  - "0.10"
-# - "0.8"
-# - "0.6"
+ - "0.11"
+ - "0.10"
 
-# http://docs.travis-ci.com/user/database-setup/
-# Most services are not started on boot to make more RAM available to project test suites.
-services:
-#  - mongodb
-
-## Use this to prepare the system to install prerequisites or dependencies 
 before_install:
-# https://github.com/travis-ci/travis-ci/issues/281
  - "sudo apt-add-repository -y ppa:jon-severinsson/ffmpeg"
  - "sudo apt-get update"
  - "sudo apt-get install ffmpeg"
 
-## Use this to install any prerequisites
-## or dependencies necessary to run your build
 install:
-  - "npm install"                              # may be default???
-  - "npm install -g jasmine-node"
-  - "npm install forever -g"
+ - "npm install"
+ - "npm install forever --global"
+ - "npm install jasmine-node --global"
 
-  # env:
-# - ""
-
-## Use this to prepare your build for testing
-## e.g. copy database configurations, environment variables, etc.
-## http://stackoverflow.com/questions/12336566/travis-ci-with-jasmine-node
 before_script:
-  - "forever start server.js"
-
-
-## Default is specific to project language
-## All commands must exit with code 0 on success. Anything else is considered failure.
-## You can specify the main build command to run
-## instead of the default e.g. script: "./run-tests.sh"
-# script:
+ - "forever start server.js"
 
 after_script:
-  - "npm stop"
-
-# after_success:
-#  - ""
-
-# after_failure:
-#  - ""
-
-# notifications:
-#   email:
-#     recipients:
-#       - balh@blah.org
-#       - blah@balh.org
-#     on_success: [always|never|change]
-#     on_failure: [always|never|change]
-#   webhooks:  blah.org/travisci
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ - "npm stop"

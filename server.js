@@ -1,35 +1,14 @@
-//////////////
-//Importing//
-////////////
+var Express = require("express")
+var BodyParser = require("body-parser")
+var CrossOriginResourceSharing = require("cors")
 
-var http = require("http")
-var cors = require("cors")
-var express = require("express")
-var socketio = require("socket.io")
+var application = new Express()
 
-var AssetStore = require("./source/asset.store.js")
-var YoutubeUtils = require("./source/youtube.process.js")
+application.use(BodyParser.json())
+application.use(CrossOriginResourceSharing())
 
-////////////
-//Routing//
-//////////
+application.use("/v1", require("./routers/v1.router.js"))
+application.use("/v2", require("./routers/v2.router.js"))
+application.use("/", require("./routers/default.router.js"))
 
-application = express()
-application["use"](cors())
-application["use"]("/v2", require("./source/router.js"))
-application["use"]("/", require("./source/greet.router.js"))
-application["all"]("*", function(request, response)
-{
-    response.status(404).send("put error message here")
-})
-
-////////////
-//Serving//
-//////////
-
-port = process.env.PORT || 8080
-server = http.Server(application)
-server.listen(port, function()
-{
-    console.log("Cumulonimbus is serving at " + port)
-})
+application.listen(process.env.PORT || 8080)

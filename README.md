@@ -1,9 +1,6 @@
-# Cumulonimbus #
+# Viditor Cumulonimbus # [![License](http://img.shields.io/:license-mit-blue.svg)](http://viditor.mit-license.org)
 
 A cloud server for video editing.
-
-[![Build](https://travis-ci.org/viditor/cumulonimbus.svg)](https://travis-ci.org/viditor/cumulonimbus)
-[![License](http://img.shields.io/:license-mit-blue.svg)](http://cumulonimbus.mit-license.org)
 
 ### Resources ###
 

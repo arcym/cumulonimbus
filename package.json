@@ -1,11 +1,13 @@
 {
   "name": "cumulonimbus",
-  "version": "0.0.0",
-  "description": "video editing cloud server for viditor",
+  "version": "1.0.0",
+  "description": "a cloud server for video editing",
   "keywords": [
+    "viditor",
+    "video",
     "video editing",
-    "cloud server",
-    "viditor"
+    "server",
+    "service"
   ],
   "contributors": [
     "Andrew McPherson",
@@ -18,9 +20,9 @@
     "url": "https://github.com/viditor/cumulonimbus"
   },
   "scripts": {
+    "test": "jasmine-node specs --verbose",
     "start": "forever start server.js",
-    "stop": "forever stop server.js",
-    "test": "jasmine-node specs --verbose"
+    "stop": "forever stop server.js"
   },
   "engines": {
     "node": ">=0.10.3"
@@ -31,17 +33,11 @@
     "cors": "^2.5.3",
     "express": "~4.10.6",
     "fluent-ffmpeg": "~2.0.0-rc3",
-    "mongojs": "~0.18.2",
-    "mongoose": "^3.8.21",
     "node-uuid": "^1.4.2",
-    "socket.io": "^1.3.4",
     "ytdl-core": "~0.5.0",
     "datauri": "~0.6.0",
     "shortid": "~2.2.2",
     "fusion": "git://github.com/viditor/fusion"
   },
-  "devDependencies": {
-    "frisby": "~0.8.5"
-  },
-  "license": "MIT"
+  "license": "mit"
 }
